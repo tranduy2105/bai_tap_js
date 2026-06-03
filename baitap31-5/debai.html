@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài Tập Buổi 7</title>
+    <link rel="stylesheet" href="giaodienn.css" />
+  </head>
+  <body>
+    BÀI 8 — Kết Hợp Tất Cả ------------------------ Cho đoạn HTML và dữ liệu
+    sau:
+
+    <input id="ten-sp" placeholder="Tên sản phẩm" />
+    <input id="gia-sp" placeholder="Giá" type="number" />
+    <button id="btn-them">Thêm</button>
+    <button id="btn-xoa-het">Xóa tất cả</button>
+    <div id="container"></div>
+    <p id="dem-sp">Tổng: 0 sản phẩm</p>
+
+    const danhSach = []; Yêu cầu: 1. Click "Thêm": - Nếu tên rỗng → không làm gì
+    - Tạo object { id, ten, gia } thêm vào mảng danhSach - Render lại toàn bộ
+    container bằng innerHTML - Cập nhật thẻ p: "Tổng: X sản phẩm" - Xóa trắng 2
+    input 2. Click "Xóa tất cả": - Xóa hết mảng danhSach (danhSach = []) - Xóa
+    trắng container - Cập nhật thẻ p: "Tổng: 0 sản phẩm" Kết quả mong đợi: -
+    Nhập "Áo thun" + 250000 → click Thêm → hiển thị 1 card - Nhập thêm "Quần
+    jean" + 450000 → hiển thị 2 card - Click Xóa tất cả → container trống, tổng
+    về 0 ══════════════════════════════════════════════════════ BÀI 9 — Tab
+    Chuyển Nội Dung ----------------------------- Cho đoạn HTML sau:
+
+    <div class="tabs">
+      <button class="tab active" data-tab="ao">Áo</button>
+      <button class="tab" data-tab="quan">Quần</button>
+      <button class="tab" data-tab="giay">Giày</button>
+    </div>
+    <div id="noi-dung"></div>
+
+    const duLieu = { ao: [{ ten: "Áo thun", gia: 250000 }, { ten: "Áo khoác",
+    gia: 650000 }], quan: [{ ten: "Quần jean", gia: 450000 }, { ten: "Quần
+    short", gia: 180000 }], giay: [{ ten: "Giày sneaker", gia: 800000 }, { ten:
+    "Giày da", gia: 1200000 }], }; Yêu cầu: 1. Khi click vào tab: - Xóa class
+    "active" khỏi tất cả button - Thêm class "active" vào button vừa click - Đọc
+    data-tab để biết đang chọn mục nào - Render sản phẩm tương ứng vào #noi-dung
+    bằng innerHTML 2. Mặc định khi load trang: hiển thị tab "Áo" và render sản
+    phẩm áo 3. Viết CSS cho .tab.active: nền xanh, chữ trắng Kết quả mong đợi: -
+    Click "Quần" → button Quần active, hiển thị 2 sản phẩm quần - Click "Giày" →
+    button Giày active, hiển thị 2 sản phẩm giày - Chỉ 1 tab active tại 1 thời
+    điểm BÀI 10 — Giỏ Hàng Đơn Giản ----------------------------- Cho đoạn HTML
+    và dữ liệu sau:
+
+    <div id="ds-san-pham"></div>
+    <div id="gio-hang">
+      <h3>Giỏ hàng (<span id="so-luong">0</span>)</h3>
+      <div id="ds-gio"></div>
+      <p>Tổng tiền: <strong id="tong-tien">0</strong>đ</p>
+    </div>
+
+    const sanPhams = [ { id: 1, ten: "Áo thun", gia: 250000 }, { id: 2, ten:
+    "Quần jean", gia: 450000 }, { id: 3, ten: "Giày sneaker", gia: 800000 }, ];
+    const gio = []; Yêu cầu: 1. Render danh sách sanPhams ra #ds-san-pham Mỗi
+    sản phẩm có nút "Thêm vào giỏ" 2. Click "Thêm vào giỏ": - Thêm sản phẩm vào
+    mảng gio - Nếu đã có trong giỏ → tăng soLuong lên 1 - Render lại #ds-gio:
+    tên + giá + số lượng - Cập nhật #so-luong: tổng số item - Cập nhật
+    #tong-tien: tổng tiền (gia × soLuong) Kết quả mong đợi: - Click "Thêm" Áo
+    thun 2 lần → giỏ có: Áo thun ×2 = 500.000đ - Tổng tiền cập nhật đúng sau mỗi
+    lần thêm - Số lượng trên tiêu đề đúng BÀI 11 — Danh Sách Có Tìm Kiếm & Xóa
+    ---------------------------------------- Cho đoạn HTML và dữ liệu sau:
+    <div id="container"></div>
+
+    const sanPhams = [ { id: 1, ten: "Áo thun nam", gia: 250000 }, { id: 2, ten:
+    "Áo khoác nữ", gia: 650000 }, { id: 3, ten: "Quần jean", gia: 450000 }, {
+    id: 4, ten: "Quần short", gia: 180000 }, { id: 5, ten: "Giày sneaker", gia:
+    800000 }, ]; Yêu cầu: 1. Render toàn bộ sản phẩm khi load trang Mỗi card có:
+    tên, giá, nút "Xóa" 2. Gõ vào input → lọc realtime (event input): - Chỉ hiển
+    thị sản phẩm có tên chứa từ khóa - Không phân biệt hoa/thường - Cập nhật
+    #ket-qua-dem: "Tìm thấy X sản phẩm" 3. Click "Xóa" trên card: - Xóa sản phẩm
+    đó khỏi mảng sanPhams - Render lại danh sách - Cập nhật số đếm Kết quả mong
+    đợi: - Gõ "áo" → hiển thị 2 sản phẩm, đếm: Tìm thấy 2 sản phẩm - Gõ "jean" →
+    hiển thị 1 sản phẩm - Click Xóa Quần jean → còn 4 SP, render lại - Xóa xong
+    gõ lại → tìm kiếm đúng trên dữ liệu mới BÀI 12 — Bảng Điểm Học Viên
+    ------------------------------ Cho đoạn HTML sau:
+
+    <input id="ten-hv" placeholder="Họ tên" />
+    <input id="diem" placeholder="Điểm (0-10)" type="number" />
+    <button id="btn-them1">Thêm</button>
+    <button id="btn-xoa-het1">Xóa tất cả</button>
+    <table id="bang-diem">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Họ tên</th>
+          <th>Điểm</th>
+          <th>Xếp loại</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="noi-dung-bang"></tbody>
+    </table>
+    <p id="thong-ke"></p>
+
+    const danhSach = []; Yêu cầu: 1. Click "Thêm": - Kiểm tra: tên không rỗng,
+    điểm từ 0 đến 10 - Tính xếp loại: >= 8 = Giỏi, >= 6.5 = Khá, >= 5 = TB, < 5
+    = Yếu - Thêm 1 hàng
+    <tr>
+      vào tbody với đầy đủ thông tin - Hàng xếp loại "Giỏi": nền xanh nhạt -
+      Hàng xếp loại "Yếu": nền đỏ nhạt - Mỗi hàng có nút "Xóa" để xóa hàng đó 2.
+      Sau mỗi lần thêm/xóa, cập nhật #thong-ke: "Tổng: X học viên | Điểm TB: Y |
+      Cao nhất: Z" 3. Click "Xóa tất cả": xóa sạch tbody và mảng Kết quả mong
+      đợi: - Thêm "Nguyễn A" điểm 9 → hàng nền xanh, xếp loại Giỏi - Thêm "Trần
+      B" điểm 4 → hàng nền đỏ, xếp loại Yếu - Thống kê cập nhật đúng sau mỗi
+      thao tác - Xóa từng hàng → thống kê tính lại
+      ══════════════════════════════════════════════════════ Gợi ý: Làm theo thứ
+      tự 9 → 12 Bài 9: Dùng data-* attribute để phân biệt tab Bài 10: Dùng
+      find() để kiểm tra đã có trong giỏ chưa Bài 11: Dùng filter() +
+      toLowerCase() để tìm kiếm Bài 12: Khó nhất — tính toán + render bảng +
+      thống kê
+
+      <input id="tim-kiem" placeholder="Tìm sản phẩm..." />
+      <p id="ket-qua-dem"></p>
+    </tr>
+    <script src="bailam.js"></script>
+  </body>
+</html>
