@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài Tập Buổi 8</title>
+  </head>
+  <body>
+    BÀI 3 — submit & keydown -------------------------- Cho đoạn HTML sau:
+
+    <form id="form">
+      <input id="ten" placeholder="Họ tên" />
+      <input id="tuoi" placeholder="Tuổi" type="number" />
+      <button type="submit">Thêm</button>
+    </form>
+    <ul id="danh-sach"></ul>
+
+    const hocViens = []; Yêu cầu: 1. Submit form: - Gọi e.preventDefault() —
+    không reload trang - Tên rỗng → alert "Vui lòng nhập tên" - Tuổi không hợp
+    lệ ( 1 hoặc > 100) → alert "Tuổi không hợp lệ" - Hợp lệ → thêm vào mảng
+    hocViens, render lại ul - Xóa trắng 2 input sau khi thêm 2. Nhấn Enter ở bất
+    kỳ input → submit form (gọi form.requestSubmit()) 3. Nhấn Escape ở bất kỳ
+    input → xóa trắng cả 2 input Kết quả mong đợi: - Nhập "Nguyễn A" + 20 →
+    Enter → thêm vào list, input trắng - Nhập tên để trống → Enter → alert lỗi -
+    Nhấn Escape → 2 ô nhập bị xóa trắng BÀI 4 — focus & blur Validate
+    -------------------------------- Cho đoạn HTML sau:
+
+    <input id="email" placeholder="Email" />
+    <p id="email-error" style="color: red"></p>
+
+    <input id="password" placeholder="Mật khẩu" type="password" />
+    <p id="pw-error" style="color: red"></p>
+
+    <button id="submit-btn" disabled>Đăng ký</button>
+
+    Yêu cầu: 1. Email: - blur → kiểm tra: phải chứa "@" và "." - Không hợp lệ →
+    hiện lỗi "Email không hợp lệ" dưới input - focus → xóa lỗi, xóa class
+    invalid 2. Password: - blur → kiểm tra: phải >= 6 ký tự - Không hợp lệ →
+    hiện lỗi "Mật khẩu ít nhất 6 ký tự" - input → realtime kiểm tra và cập nhật
+    lỗi 3. Button: - Chỉ enable khi CẢ 2 field đều hợp lệ - Kiểm tra lại sau mỗi
+    lần blur Kết quả mong đợi: - Nhập "abc" → blur → hiện lỗi email - Nhập
+    "abc@gmail.com" → blur → không lỗi - Cả 2 hợp lệ → button enabled BÀI 5 —
+    Event Delegation -------------------------- Cho đoạn HTML và dữ liệu sau:
+
+    <div id="container"></div>
+
+    const sanPhams = [ { id: 1, ten: "Áo thun", gia: 250000, soLuong: 10 }, {
+    id: 2, ten: "Quần jean", gia: 450000, soLuong: 5 }, { id: 3, ten: "Giày
+    sneaker", gia: 800000, soLuong: 2 }, { id: 4, ten: "Mũ bucket", gia: 150000,
+    soLuong: 0 }, ]; Yêu cầu: 1. Render tất cả sản phẩm ra #container bằng
+    innerHTML Mỗi card có: tên, giá, số lượng, nút "Thêm giỏ", nút "Xóa" Sản
+    phẩm hết hàng (soLuong = 0): nút "Thêm giỏ" bị disabled 2. Dùng Event
+    Delegation trên #container: - Click "Thêm giỏ" → giảm soLuong đi 1, render
+    lại Nếu soLuong về 0 → disable nút, thêm class "het-hang" - Click "Xóa" →
+    xóa sản phẩm khỏi mảng, render lại 3. Sau mỗi thao tác in ra console: "Còn
+    lại X sản phẩm, tổng tồn kho Y cái" Kết quả mong đợi: - Click "Thêm giỏ" Áo
+    thun → soLuong giảm còn 9 - Click "Thêm giỏ" Giày 2 lần → hết hàng, nút
+    disabled - Click "Xóa" Mũ bucket → còn 3 sản phẩm trong mảng BÀI 6 — Kết Hợp
+    Tất Cả ------------------------ Cho đoạn HTML sau:
+
+    <input id="search" placeholder="Tìm sản phẩm..." />
+    <select id="sort">
+      <option value="">-- Sắp xếp --</option>
+      <option value="tang">Giá tăng dần</option>
+      <option value="giam">Giá giảm dần</option>
+    </select>
+    <p id="ket-qua"></p>
+    <div id="container"></div>
+
+    (Dùng lại mảng sanPhams ở bài 5) Yêu cầu: 1. Gõ vào search (event input): -
+    Lọc sản phẩm theo tên, không phân biệt hoa/thường - Cập nhật #ket-qua: "Tìm
+    thấy X sản phẩm" - Render lại danh sách 2. Chọn sắp xếp (event change): -
+    Sắp xếp theo giá tăng hoặc giảm dần - Kết hợp với search hiện tại (vừa lọc
+    vừa sort) 3. Dùng Event Delegation trên #container: - Click "Xem chi tiết" →
+    alert tên + giá + số lượng - Click "Xóa" → xóa khỏi mảng, render lại 4. Nhấn
+    Escape ở ô search → xóa trắng, hiện lại tất cả Kết quả mong đợi: - Gõ "á" →
+    hiện Áo thun + Áo khoác... (nếu có) - Chọn "Giá tăng dần" trong khi đang
+    search → vẫn lọc đúng + sort đúng - Nhấn Escape → reset về toàn bộ danh sách
+    ══════════════════════════════════════════════════════ Gợi ý: Làm theo thứ
+    tự 1 → 6 Bài 1–2: Chỉ click, input, change — không cần mảng Bài 3–4: submit,
+    keydown, focus, blur — form Bài 5: Delegation — quan trọng, làm kỹ Bài 6:
+    Kết hợp hết — khó nhất, làm sau cùng
+    ══════════════════════════════════════════════════════
+    <script src="baitap3_6.js"></script>
+  </body>
+</html>
