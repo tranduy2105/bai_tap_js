@@ -1,0 +1,70 @@
+body{
+  padding:20px;
+}
+
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+input,select,button{
+  padding:8px;
+}
+
+table{
+  width:100%;
+  border-collapse: collapse;
+}
+
+th,td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:center;
+}
+
+th{
+  background:#f3f3f3;
+  cursor:pointer;
+}
+
+th:hover{
+  background:#dbeafe;
+}
+
+tbody tr:hover{
+  background:#f5f5f5;
+}
+
+.badge{
+  padding:10px 10px;
+  border-radius:5px;
+  color:white;
+}
+
+.gioi{
+  background:green;
+}
+
+.kha{
+  background:orange;
+}
+
+.tb{
+  background:gray;
+}
+
+.yeu{
+  background:red;
+}
+
+.hidden{
+  display:none;
+}
+.xoa{
+  background:red;
+  color:white;
+  border:none;
+  padding:6px 10px;
+  cursor:pointer;
+}

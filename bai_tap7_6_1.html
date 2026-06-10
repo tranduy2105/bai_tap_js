@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản lý học viên</title>
+    <link rel="stylesheet" href="bai_tap7_6_1.css" />
+  </head>
+  <body>
+    <h1>Danh Sách Học Viên</h1>
+
+    <div class="toolbar">
+      <input id="search" placeholder="Tìm theo tên" />
+
+      <select id="filter">
+        <option value="Tất cả">Tất cả</option>
+        <option value="Giỏi">Giỏi</option>
+        <option value="Khá">Khá</option>
+        <option value="TB">TB</option>
+        <option value="Yếu">Yếu</option>
+      </select>
+
+      <button id="btn-them">Thêm học viên</button>
+    </div>
+
+    <p id="thong-ke"></p>
+
+    <div id="form-them" class="hidden">
+      <input id="ten" placeholder="Họ tên" />
+      <input id="lop" placeholder="Lớp" />
+      <input id="diem" type="number" min="0" max="10" placeholder="Điểm" />
+      <button id="luu">Lưu</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Họ tên</th>
+          <th>Lớp</th>
+          <th data-sort="diem">Điểm</th>
+          <th data-sort="diem">Xếp loại <span id="mui-ten"></span></th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <script src="bai_tap7_6_1.js"></script>
+  </body>
+</html>
